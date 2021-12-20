@@ -11,15 +11,19 @@
 // }
 
 function game() {
-    let playerSelection;
-    let playerScore = 0;
-    let computerScore = 0;
-    let roundsPlayed = 0;
+
+    /* main */
     const buttons = document.querySelectorAll('button');
     const resultText = document.querySelector('#result');
     const playerScoreText = document.querySelector('#player-score');
     const computerScoreText = document.querySelector('#computer-score');
-    const declareWinnerText = document.querySelector('#declare-winner');
+    const roundsPlayedText = document.querySelector('#rounds-played span');
+
+    let playerSelection;
+    let playerScore;
+    let computerScore;
+    let roundsPlayed;
+    reset();
 
     buttons.forEach( (button) => {
         button.addEventListener('click', (e) => { 
@@ -30,6 +34,8 @@ function game() {
         });
     });
 
+    /* functions */
+
     function reset() {
         playerScore = 0;
         computerScore = 0;
@@ -37,25 +43,26 @@ function game() {
         resultText.textContent = '';
         playerScoreText.textContent = '0';
         computerScoreText.textContent = '0';
-        declareWinnerText.textContent = '';
+        roundsPlayedText.textContent = '0';
     }
 
     function updateScoreboard(event) {
-        playerSelection = event.target.id.toUpperCase();
+        playerSelection = event.target.getAttribute("data-type").toUpperCase();
         const result = playRound(playerSelection, getComputerSelection());
         resultText.textContent = result;
+        roundsPlayedText.textContent = roundsPlayed;
         playerScoreText.textContent = playerScore;
         computerScoreText.textContent = computerScore;
         if (roundsPlayed === 5) {
             let declareWinner;
             if (playerScore === computerScore) {
-                declareWinner = 'A legendary battle... it ends in stalemate.'
+                declareWinner = 'A legendary battle... it ends in stalemate.';
             } else if (playerScore > computerScore) {
-                declareWinner = 'You win! Victory over the computer!'
+                declareWinner = 'Victory over the computer!';
             } else {
-                declareWinner = 'You lost! The computer is victorious!'
+                declareWinner = 'The computer is victorious!';
             }
-            declareWinnerText.textContent = declareWinner;
+            resultText.textContent = declareWinner;
         }
     }
 
