@@ -57,9 +57,17 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound(getPlayerSelection(), getComputerSelection()));
-    }
+
 }
 
-game();
+const buttons = document.querySelectorAll('button');
+let playerSelection;
+
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        playerSelection = e.target.id.toUpperCase();
+        const result = playRound(playerSelection, getComputerSelection());
+        document.querySelector('#result').textContent = result; 
+    });
+});
+
