@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Staatliches&family=VT323&display=swap');
+
 html {
     box-sizing: border-box;
 }
@@ -7,14 +9,120 @@ html {
 }
 
 img {
-    width: 100px;
+    width: 200px;
     height: auto;
+    background: transparent;
+}
+
+.elem {
+    transform: rotate(-90deg);
+}
+
+button {
+    border: none;
+    padding: 0;
+    background-color: lightcoral;
+    transition: all .2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.2);
+}
+
+button img {
+    width: 100px;
 }
 
 body {
     margin: 0;
-    padding: 0;
+    padding: 100px 100px 50px 100px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: lightblue;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 3px solid black;
+    background-color: lightskyblue;
+}
+
+.score {
+    font-size: 48px;
+    text-decoration: underline;
+}
+
+#rounds-played {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex: 1;
+}
+
+.vs {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 100px;
+    text-decoration: underline;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button-rps {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-container {
+    background-color: lightcoral;
+    border: 3px solid black;
+    border-radius: 50%;
+    text-align: center;
+    padding: 60px;
+}
+
+.result-container {
+    font-size: 32px;
+    font-family: 'VT323', sans-serif;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+}
+
+.evil-computer {
+    height: 300px;
+    width: auto;
+    animation: move 5s infinite;
+    flex: 1;
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(20px);
+    }
+
+    50% {
+        transform: translateX(-20px);
+    }
+
+    100% {
+        transform: translateX(20px);
+    }
 }

@@ -5,41 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src='./script.js' defer></script>
+    <link rel="icon" type="image/x-icon" href="./images/favicon-humphrey-rps.ico">
     <link rel="stylesheet" href="./styles.css">
     <title>Rock Paper Scissors!</title>
 </head>
 <body>
 
-    <header id="score-board">
-        <span id="player-score" class="score">0</span>
-        <div id="rounds-played">Round <span></span></div>
-        <span id="computer-score" class="score">0</span>
+    <header id="score-board" class='wrapper'>
+        <span id="player-score" class="score"></span>
+        <div id="rounds-played"></div>
+        <span id="computer-score" class="score"></span>
     </header>
 
-    <main class="display">
+    <main class="display wrapper">
         <div class="player-choice">
-            <img src="./images/rock.png" alt="Your pick">
+            <img src="./images/rock.png" alt="Your pick" class='elem'>
         </div>
-        <img src="./images/versus.png" alt="VERSUS">
+        <div class='vs'>VERSUS</div>
         <div class="computer-choice">
-            <img src="./images/paper.png" alt="The computer's pick">
+            <img src="./images/paper.png" alt="The computer's pick" class='elem'>
         </div>
     </main>
 
-    <footer>
+    <footer class='wrapper'>
         <div class="button-rps">
-            <button id="rock" data-type="rock">
-                <img src="./images/rock.png" alt="Rock" class="" data-type="rock">
-            </button>
-            <button id="paper" data-type="paper">
-                <img src="./images/paper.png" alt="Paper" class="" data-type="paper">
-            </button>
-            <button id="scissors" data-type="scissors">
-                <img src="./images/scissors.png" alt="Scissors" class="" data-type="scissors">
-            </button>
+            <div class="button-container">
+                <button id="rock" data-type="rock">
+                    <img src="./images/rock.png" alt="Rock" class="elem" data-type="rock">
+                </button>
+                <div class="lower-buttons">
+                    <button id="paper" data-type="paper">
+                        <img src="./images/paper.png" alt="Paper" class="elem" data-type="paper">
+                    </button>
+                    <button id="scissors" data-type="scissors">
+                        <img src="./images/scissors.png" alt="Scissors" class="elem" data-type="scissors">
+                    </button>
+                </div>
+            </div>
         </div>
-        <div id="result"></div>
-        <img src="./images/enemy.png" alt="The evil face of the computer">   
+        <div class="result-container">
+            <div id="result">Choose rock, paper or scissors to play!</div>
+            <img src="" alt="" class="result-pic">
+        </div>
+        <img src="./images/evil_computer.png" alt="The evil face of the computer" class='evil-computer'>   
     </footer>
 
 </body>

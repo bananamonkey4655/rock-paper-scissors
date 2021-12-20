@@ -17,12 +17,18 @@ function game() {
     const resultText = document.querySelector('#result');
     const playerScoreText = document.querySelector('#player-score');
     const computerScoreText = document.querySelector('#computer-score');
-    const roundsPlayedText = document.querySelector('#rounds-played span');
+    const roundsPlayedText = document.querySelector('#rounds-played');
+    const playerChoice = document.querySelector('.player-choice img');
+    const computerChoice = document.querySelector('.computer-choice img');
+    const header = document.querySelector('header');
+    const resultPic = document.querySelector('.result-pic');
 
     let playerSelection;
+    let computerSelection;
     let playerScore;
     let computerScore;
     let roundsPlayed;
+
     reset();
 
     buttons.forEach( (button) => {
@@ -34,34 +40,47 @@ function game() {
         });
     });
 
-    /* functions */
+    /* helper functions */
 
     function reset() {
         playerScore = 0;
         computerScore = 0;
         roundsPlayed = 0;
-        resultText.textContent = '';
         playerScoreText.textContent = '0';
         computerScoreText.textContent = '0';
-        roundsPlayedText.textContent = '0';
+        roundsPlayedText.textContent = 'ROUND 0';
+        header.style.backgroundColor = 'lightskyblue';
+        resultPic.src = '';
     }
 
     function updateScoreboard(event) {
         playerSelection = event.target.getAttribute("data-type").toUpperCase();
-        const result = playRound(playerSelection, getComputerSelection());
+        computerSelection = getComputerSelection();
+        const result = playRound(playerSelection, computerSelection);
+
+        //update UI
+        playerChoice.src = `./images/${playerSelection.toLowerCase()}.png`;
+        computerChoice.src = `./images/${computerSelection.toLowerCase()}.png`;
         resultText.textContent = result;
-        roundsPlayedText.textContent = roundsPlayed;
+        roundsPlayedText.textContent = 'ROUND ' + roundsPlayed;
         playerScoreText.textContent = playerScore;
         computerScoreText.textContent = computerScore;
         if (roundsPlayed === 5) {
             let declareWinner;
             if (playerScore === computerScore) {
                 declareWinner = 'A legendary battle... it ends in stalemate.';
+                header.style.backgroundColor = 'white';
+                resultPic.src = './images/draw.png';
             } else if (playerScore > computerScore) {
                 declareWinner = 'Victory over the computer!';
+                header.style.backgroundColor = 'lime';
+                resultPic.src = './images/victory.png';
             } else {
-                declareWinner = 'The computer is victorious!';
+                declareWinner = 'The computer bested you.';
+                header.style.backgroundColor = 'lightsalmon';
+                resultPic.src = './images/defeat.png';
             }
+            roundsPlayedText.textContent = 'GAME OVER!';
             resultText.textContent = declareWinner;
         }
     }
